@@ -173,6 +173,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SampleController.cs" />
+    <Compile Include="Controllers\SongController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,6 +198,7 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\SDWebApiDbContext.cs" />
+    <Compile Include="Models\Song.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,9 +208,7 @@
     <None Include="packages.config" />
     <None Include="Web.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="AppData\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -220,7 +220,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <FlavorProperties GUID="{349C5851-65DF-11DA-9384-00065B846F21}">
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
@@ -236,5 +236,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <ItemGroup Label="publish_config_placeholder"/>
+  <ItemGroup Label="publish_config_placeholder" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v16.0\WebApplications\Microsoft.WebApplication.targets" />
 </Project>
