@@ -15,7 +15,7 @@ namespace SharpDevelopWebApi.Models
 	/// </summary>
 	public class Student : Person
 	{
-		public string Course { get; set; }
+		public int CourseId { get; set; }
 		public string SchoolLastAttended { get; set; }
 		
 	}
