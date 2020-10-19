@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace SharpDevelopWebApi.Controllers
 {
-    public class CustomerController : ApiController 
+    public class CustomerController : ApiController
     {
         SDWebApiDbContext _db = new SDWebApiDbContext();
         
