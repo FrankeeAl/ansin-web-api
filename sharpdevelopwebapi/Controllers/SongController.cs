@@ -4,46 +4,69 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 using SharpDevelopWebApi.Models;
 
 namespace SharpDevelopWebApi.Controllers
 {
     public class SongController : ApiController
     {
+        SDWebApiDbContext _db = new SDWebApiDbContext();
+        
         [HttpGet]
-        public IHttpActionResult GetSong()
+        public IHttpActionResult GetAll()
         {
-            var songs = new List<Song>();
-
-            var mySong = new Song();
-            mySong.Id = 4;
-            mySong.Title = "Roxanne";
-            mySong.Artist = "Arizona Zervas";
-            mySong.Genre = "RnB/HipHop";
-            songs.Add(mySong);
-
-            var song1 = new Song();
-            song1.Id = 1;
-            song1.Title = "You";
-            song1.Artist = "Basil Valdez";
-            song1.Genre = "Pop";
-            songs.Add(song1);
-
-            var song2 = new Song();
-            song2.Id = 2;
-            song2.Title = "Heaven Knows";
-            song2.Artist = "Orange and Lemon";
-            song2.Genre = "OPM";
-            songs.Add(song2);
-
-            var song3 = new Song();
-            song3.Id = 3;
-            song3.Title = "Versace on the floor";
-            song3.Artist = "Bruno Mars";
-            song3.Genre = "RnB";
-            songs.Add(song3);
-
+            List<Song> songs = _db.Songs.ToList();
             return Ok(songs);
+        }
+        [HttpPost]
+        public IHttpActionResult Create([FromBody]Song song)
+        {
+            _db.Songs.Add(song);
+            _db.SaveChanges();
+            return Ok("Successfully Added " + "Song Id" + song.Id);
+        }
+
+        [HttpPut]
+        public IHttpActionResult Update([FromBody] Song updateSong)
+        {
+            var song = _db.Songs.Find(updateSong.Id);
+            if (song != null)
+            {
+                song.Id = updateSong.Id;
+                song.Title = updateSong.Title;
+                song.Artist = updateSong.Artist;
+                song.Genre = updateSong.Genre;
+                _db.Entry(song).State = EntityState.Modified;
+                _db.SaveChanges();
+                return Ok(song);
+            }
+            else
+                return BadRequest("Song not found.");
+        }
+
+        [HttpDelete]
+        public IHttpActionResult Delete(int Id)
+        {
+            var songToDelete = _db.Songs.Find(Id);
+            if (songToDelete != null)
+            {
+                _db.Songs.Remove(songToDelete);
+                _db.SaveChanges();
+                return Ok("Successfully Deleted.");
+            }
+            else
+                return BadRequest("Song not found.");
+        }
+
+        [HttpGet]
+        public IHttpActionResult Get(int Id)
+        {
+            var song = _db.Songs.Find(Id);
+            if (song != null)
+                return Ok(song);
+            else
+                return BadRequest("Song not found.");
         }
     }
 }
