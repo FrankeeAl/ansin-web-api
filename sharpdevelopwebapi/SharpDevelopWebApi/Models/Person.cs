@@ -18,11 +18,7 @@ namespace SharpDevelopWebApi.Models
 		public int Id { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
-<<<<<<< Updated upstream:sharpdevelopwebapi/Models/Person.cs
-        public string Gender { get; set; }
-=======
 		public string Gender { get; set; }
->>>>>>> Stashed changes:sharpdevelopwebapi/SharpDevelopWebApi/Models/Person.cs
         public string CivilStatus { get; set; }
 	}
 }

@@ -8,7 +8,7 @@ namespace SharpDevelopWebApi.Models
 {
     public class SDWebApiDbContext : DbContext
     {
-        public SDWebApiDbContext() : base("ansinDb") // name_of_dbconnection_string
+        public SDWebApiDbContext() : base("ansinDb") // DefaultConn ansinDb
         {
         }
 
@@ -20,15 +20,11 @@ namespace SharpDevelopWebApi.Models
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Song> Songs { get; set; }
-<<<<<<< Updated upstream:sharpdevelopwebapi/Models/SDWebApiDbContext.cs
-        public DbSet<Grade> Grades { get; set; }
-=======
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Faculty> Faculties { get; set; }
         public DbSet<Subject> Subjects { get; set; }
 
->>>>>>> Stashed changes:sharpdevelopwebapi/SharpDevelopWebApi/Models/SDWebApiDbContext.cs
     }
 
 
