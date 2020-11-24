@@ -38,6 +38,10 @@ namespace SharpDevelopWebApi.Controllers
             if (peak != null)
             {
                 songs = songs.Where(x => x.PeakChartPosition <= peak).ToList();
+            } 
+            if (year != null)
+            {
+                songs = songs.Where(x => x.ReleaseYear <= year).ToList();
             }
 
             int totalSongs = songs.Count();
