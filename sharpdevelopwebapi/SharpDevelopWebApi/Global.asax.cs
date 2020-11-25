@@ -6,6 +6,7 @@
  */
  
 using System;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -13,6 +14,7 @@ using System.Web.SessionState;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.Application;
 using Hangfire.MemoryStorage;
+using SharpDevelopWebApi.Models;
 
 namespace SharpDevelopWebApi
 {
@@ -46,9 +48,9 @@ namespace SharpDevelopWebApi
 		    config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 		    config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;            
             config.EnsureInitialized();
-            
-			// Configure Hangfire www.hangfire.io            
-			Hangfire.GlobalConfiguration.Configuration.UseMemoryStorage();
+
+            // Configure Hangfire www.hangfire.io            
+            Hangfire.GlobalConfiguration.Configuration.UseMemoryStorage();
 			_backgroundJobServer = new Hangfire.BackgroundJobServer();         
 
 			SimpleLogger.Init();

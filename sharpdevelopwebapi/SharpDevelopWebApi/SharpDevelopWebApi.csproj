@@ -178,6 +178,7 @@
     <Compile Include="Controllers\SampleController.cs" />
     <Compile Include="Controllers\SongController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentGradeController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,7 +196,6 @@
     <Compile Include="Helpers\SimpleLogger.cs" />
     <Compile Include="Helpers\TuesPechkinPdf.cs" />
     <Compile Include="Helpers\UserAccount.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Customer.cs" />

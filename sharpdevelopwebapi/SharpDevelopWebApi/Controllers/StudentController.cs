@@ -12,10 +12,25 @@ namespace SharpDevelopWebApi.Controllers
     public class StudentController : ApiController
     {
         SDWebApiDbContext _db = new SDWebApiDbContext();
+
         [HttpGet]
-        public IHttpActionResult GetAllStudent()
+        public IHttpActionResult GetAllStudent(string firstName = "", string lastName = "")
         {
-            List<Student> students = _db.Students.ToList();
+            List<Student> students;
+            if (string.IsNullOrWhiteSpace(firstName))
+            {
+                students = _db.Students.ToList();
+            }
+            else
+            {
+                students = _db.Students.Where(s => s.FirstName.ToLower().Contains(firstName.ToLower())
+                                                 || s.LastName.ToLower().Contains(lastName.ToLower())).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(lastName))
+            {
+                students = students.Where(x => x.LastName.ToLower() == lastName).ToList();
+            }
             return Ok(students);
         }
         [HttpPost]

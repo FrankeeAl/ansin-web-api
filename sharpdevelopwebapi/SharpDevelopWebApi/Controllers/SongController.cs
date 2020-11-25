@@ -19,7 +19,7 @@ namespace SharpDevelopWebApi.Controllers
         public IHttpActionResult GetAll(string search = "", string artists = "", int ? year = null, int ? peak = null )
         {
             List<Song> songs;
-            if (string.IsNullOrWhiteSpace(search ))
+            if (string.IsNullOrWhiteSpace(search))
             { 
                 songs = _db.Songs.ToList();
             }

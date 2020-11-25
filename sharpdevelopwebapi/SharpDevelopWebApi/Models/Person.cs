@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SharpDevelopWebApi.Models
 {
@@ -15,7 +16,7 @@ namespace SharpDevelopWebApi.Models
 	/// </summary>
 	public class Person
 	{
-		public int Id { get; set; }
+        public int Id { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 		public string Gender { get; set; }
