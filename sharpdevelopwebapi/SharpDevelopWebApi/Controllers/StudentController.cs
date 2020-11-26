@@ -17,7 +17,7 @@ namespace SharpDevelopWebApi.Controllers
         public IHttpActionResult GetAllStudent(string firstName = "", string lastName = "")
         {
             List<Student> students;
-            if (string.IsNullOrWhiteSpace(firstName))
+            if (string.IsNullOrWhiteSpace(firstName) && string.IsNullOrWhiteSpace((lastName)))
             {
                 students = _db.Students.ToList();
             }
@@ -25,11 +25,6 @@ namespace SharpDevelopWebApi.Controllers
             {
                 students = _db.Students.Where(s => s.FirstName.ToLower().Contains(firstName.ToLower())
                                                  || s.LastName.ToLower().Contains(lastName.ToLower())).ToList();
-            }
-
-            if (!string.IsNullOrWhiteSpace(lastName))
-            {
-                students = students.Where(x => x.LastName.ToLower() == lastName).ToList();
             }
             return Ok(students);
         }
